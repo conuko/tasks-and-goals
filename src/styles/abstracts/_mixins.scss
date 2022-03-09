@@ -1,0 +1,16 @@
+// Example Code
+@mixin socials($gap, $size) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap;
+  a {
+    &:hover {
+      opacity: 0.4;
+    }
+  }
+  svg {
+    max-height: $size;
+    max-width: $size;
+    fill: #fff;
+  }
+}

@@ -1,0 +1,38 @@
+@use "_colors";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  box-sizing: border-box;
+  line-height: 1.6;
+  background-color: white;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: colors.$color-secondary;
+  color: colors.$color-primary;
+}
+
+a {
+  color: colors.$color-white;
+  &,
+  &:link,
+  &:visited {
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+}
