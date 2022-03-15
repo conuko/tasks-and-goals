@@ -19,6 +19,7 @@ body {
   box-sizing: border-box;
   line-height: 1.6;
   background-color: white;
+  color: colors.$color-primary;
   overflow-x: hidden;
 }
 
@@ -28,11 +29,14 @@ body {
 }
 
 a {
-  color: colors.$color-white;
+  color: colors.$color-black;
   &,
   &:link,
   &:visited {
     text-decoration: none;
     transition: all 0.2s;
+  }
+  &:hover {
+    color: colors.$color-primary;
   }
 }
