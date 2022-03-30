@@ -2,7 +2,6 @@ import "./styles/main.scss";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Index from "./pages/Index";
 import Todos from "./pages/Todos";
-import Goals from "./pages/Goals";
 import { UserContext } from "./context/UserContext";
 
 const App = () => {
@@ -17,9 +16,6 @@ const App = () => {
             <li>
               <Link to="/todos">Todos</Link>
             </li>
-            <li>
-              <Link to="/goals">Goals</Link>
-            </li>
           </ul>
         </nav>
         <hr />
@@ -29,7 +25,6 @@ const App = () => {
           <Routes>
             <Route path="/" exact element={<Index />} />
             <Route path="/todos" element={<Todos />} />
-            <Route path="/goals/" element={<Goals />} />
           </Routes>
         </UserContext.Provider>
       </div>
