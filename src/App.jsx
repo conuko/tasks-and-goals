@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState } from "react";
 import "./styles/main.scss";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Register from "./pages/Register";
@@ -10,7 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { UserContext } from "./context/UserContext";
 
 const App = () => {
-  const user = useContext(UserContext);
+  const [user, setUser] = useState(null);
   return (
     <Router>
       <div>
@@ -27,7 +27,7 @@ const App = () => {
         <hr />
         <br />
 
-        <UserContext.Provider value={user}>
+        <UserContext.Provider value={[user, setUser]}>
           <Routes>
             <Route path="/" exact element={<Index />} />
             <Route path="/register" element={<Register />} />
