@@ -10,7 +10,6 @@ const Index = () => {
       <h1>The Modern To Do Application</h1>
       <br />
       <h2>Welcome!</h2>
-      <div>{user}</div>
       {user === null ? (
         <div>
           <p>To proceed please register or login. Thank you!</p>
@@ -24,7 +23,10 @@ const Index = () => {
           </div>
         </div>
       ) : (
-        <div>{/* <button onClick={setUser(null)}>Logout</button> */}</div>
+        <div>
+          <div>{user}</div>
+          <button onClick={() => setUser(null)}>Logout</button>
+        </div>
       )}
     </div>
   );
