@@ -1,10 +1,16 @@
+import { useContext } from "react";
 import "./styles/main.scss";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 import Index from "./pages/Index";
 import Todos from "./pages/Todos";
+import NotFound from "./pages/NotFound";
+import ProtectedRoute from "./components/ProtectedRoute";
 import { UserContext } from "./context/UserContext";
 
 const App = () => {
+  const user = useContext(UserContext);
   return (
     <Router>
       <div>
@@ -21,10 +27,20 @@ const App = () => {
         <hr />
         <br />
 
-        <UserContext.Provider value="hello from context">
+        <UserContext.Provider value={user}>
           <Routes>
             <Route path="/" exact element={<Index />} />
-            <Route path="/todos" element={<Todos />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/todos"
+              element={
+                <ProtectedRoute user={user}>
+                  <Todos />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </UserContext.Provider>
       </div>
