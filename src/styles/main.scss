@@ -7,3 +7,16 @@
 @import "base/reset";
 @import "base/typography";
 @import "base/utilities";
+
+@import "components/buttons";
+
+@import "layout/forms";
+@import "layout/footer";
+@import "layout/inputs";
+@import "layout/navbar";
+
+@import "pages/home";
+@import "pages/login";
+@import "pages/notfound";
+@import "pages/register";
+@import "pages/todos";
