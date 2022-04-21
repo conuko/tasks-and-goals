@@ -11,12 +11,14 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   const [user, setUser] = useState({
+    id: "",
     name: "",
     email: "",
   });
 
   const addUser = (data) => {
     setUser({
+      id: data.id,
       name: data.name,
       email: data.email,
     });
@@ -33,7 +35,7 @@ const App = () => {
           path="/todos"
           element={
             <ProtectedRoute user={user.name}>
-              <Todos />
+              <Todos user={user} />
             </ProtectedRoute>
           }
         />

@@ -1,12 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import TodoItem from "../components/layout/TodoItem";
 import AddTodo from "../components/layout/AddTodo";
 
-const Todos = () => {
-  //const user = useContext(UserContext);
+interface TodoProps {
+  user: any;
+}
+
+const Todos = (props: TodoProps) => {
   const [todos, setTodos] = React.useState<any[]>([]);
-  // TODO: the array for todos should go into the context and be accessible from anywhere!!
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/tasks/author/${props.user.id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setTodos(data);
+      });
+  }, []);
 
   // callback function to add todo to the todos state:
   const addTodo = (todo: any) => {
@@ -29,7 +39,7 @@ const Todos = () => {
   return (
     <div>
       <div>
-        <AddTodo addTodo={addTodo} />
+        <AddTodo addTodo={addTodo} user={props.user} />
         <ul>
           {todos.map((todo, index) => (
             <TodoItem
