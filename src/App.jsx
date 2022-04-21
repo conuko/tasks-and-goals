@@ -8,30 +8,37 @@ import Index from "./pages/Index";
 import Todos from "./pages/Todos";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { UserContext } from "./context/UserContext";
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+  });
+
+  const addUser = (data) => {
+    setUser({
+      name: data.name,
+      email: data.email,
+    });
+  };
+
   return (
     <Router>
       <Navbar />
-
-      <UserContext.Provider value={[user, setUser]}>
-        <Routes>
-          <Route path="/" exact element={<Index />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/todos"
-            element={
-              <ProtectedRoute user={user}>
-                <Todos />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </UserContext.Provider>
+      <Routes>
+        <Route path="/" exact element={<Index user={user.name} />} />
+        <Route path="/register" element={<Register addUser={addUser} />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/todos"
+          element={
+            <ProtectedRoute user={user.name}>
+              <Todos />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </Router>
   );
 };

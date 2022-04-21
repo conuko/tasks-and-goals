@@ -4,7 +4,7 @@ import TodoItem from "../components/layout/TodoItem";
 import AddTodo from "../components/layout/AddTodo";
 
 const Todos = () => {
-  const user = useContext(UserContext);
+  //const user = useContext(UserContext);
   const [todos, setTodos] = React.useState<any[]>([]);
   // TODO: the array for todos should go into the context and be accessible from anywhere!!
 
@@ -28,8 +28,6 @@ const Todos = () => {
 
   return (
     <div>
-      <h2>{user}'s Todos.</h2>
-
       <div>
         <AddTodo addTodo={addTodo} />
         <ul>
