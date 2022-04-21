@@ -28,7 +28,7 @@ const App = () => {
       <Routes>
         <Route path="/" exact element={<Index user={user.name} />} />
         <Route path="/register" element={<Register addUser={addUser} />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login addUser={addUser} />} />
         <Route
           path="/todos"
           element={
