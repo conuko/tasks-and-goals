@@ -1,3 +1,5 @@
+import { VscClose } from "react-icons/vsc";
+
 interface TodoItemProps {
   todo: any;
   toggleTodo: Function;
@@ -18,6 +20,7 @@ const TodoItem = (props: TodoItemProps) => {
       <h2></h2>
       <input type="checkbox" id="toggle" name="toggle" onClick={handleToggle} />
       <label htmlFor="toggle">{props.todo.content}</label>
+      <VscClose onClick={handleRemove} />
       <br />
     </div>
   );
