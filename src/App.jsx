@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./styles/main.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
@@ -14,15 +14,25 @@ const App = () => {
     id: "",
     name: "",
     email: "",
+    accessToken: "",
   });
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
 
   const addUser = (data) => {
     setUser({
       id: data.id,
       name: data.name,
       email: data.email,
+      accessToken: data.accessToken,
     });
-    localStorage.setItem("user", data.accessToken);
+    localStorage.setItem("user", JSON.stringify(data));
   };
 
   return (

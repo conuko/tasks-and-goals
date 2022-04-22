@@ -10,7 +10,13 @@ const Todos = (props: TodoProps) => {
   const [todos, setTodos] = React.useState<any[]>([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/tasks/author/${props.user.id}`)
+    fetch(`http://localhost:5000/tasks/author/${props.user.id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: "Bearer " + props.user.accessToken,
+        Accept: "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         setTodos(data);
