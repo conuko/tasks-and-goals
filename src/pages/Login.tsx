@@ -28,6 +28,10 @@ const Login = (props: LoginProps) => {
       .catch((err) => console.log(err));
   };
 
+  if (localStorage.getItem("user")) {
+    return <div>You are already logged in</div>;
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>

@@ -35,11 +35,25 @@ const App = () => {
     localStorage.setItem("user", JSON.stringify(data));
   };
 
+  const removeUser = () => {
+    setUser({
+      id: "",
+      name: "",
+      email: "",
+      accessToken: "",
+    });
+    localStorage.removeItem("user");
+  };
+
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" exact element={<Index user={user.name} />} />
+        <Route
+          path="/"
+          exact
+          element={<Index user={user.name} removeUser={removeUser} />}
+        />
         <Route path="/register" element={<Register addUser={addUser} />} />
         <Route path="/login" element={<Login addUser={addUser} />} />
         <Route

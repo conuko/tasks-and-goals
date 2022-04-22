@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 interface IndexProps {
   user: any;
+  removeUser: any;
 }
 
 const Index = (props: IndexProps) => {
@@ -25,7 +26,7 @@ const Index = (props: IndexProps) => {
       ) : (
         <div>
           <div>{props.user}</div>
-          {/* <button onClick={() => setUser(null)}>Logout</button> */}
+          <button onClick={props.removeUser}>Logout</button>
         </div>
       )}
     </div>
