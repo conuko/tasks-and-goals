@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { UserContext } from "../context/UserContext";
 
 interface RegisterProps {
   addUser: Function;
@@ -9,14 +8,6 @@ const Register = (props: RegisterProps) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  /*   const [user, setUser] = useContext(UserContext); */
-
-  /*   const addUser = (data: { name: any; email: any }) => {
-    setUser({
-      name: data.name,
-      email: data.email,
-    });
-  }; */
 
   const handleSubmit = (e: any) => {
     e.preventDefault();

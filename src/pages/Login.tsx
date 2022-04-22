@@ -10,7 +10,6 @@ const Login = (props: LoginProps) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(`${email} ${password}`);
     fetch("http://localhost:5000/auth/login", {
       method: "POST",
       headers: {

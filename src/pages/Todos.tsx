@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-import { UserContext } from "../context/UserContext";
 import TodoItem from "../components/layout/TodoItem";
 import AddTodo from "../components/layout/AddTodo";
 

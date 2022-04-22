@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./styles/main.scss";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -22,6 +22,7 @@ const App = () => {
       name: data.name,
       email: data.email,
     });
+    localStorage.setItem("user", data.accessToken);
   };
 
   return (

@@ -1,5 +1,4 @@
 import { VscClose } from "react-icons/vsc";
-import { useEffect } from "react";
 
 interface TodoItemProps {
   todo: any;
@@ -9,7 +8,12 @@ interface TodoItemProps {
 
 const TodoItem = (props: TodoItemProps) => {
   const handleToggle = () => {
+    // callback function to toggle todo at the todos state:
     props.toggleTodo(props.todo.id);
+
+    !props.todo.checked
+      ? handleToggleServer(props.todo.id)
+      : handleUntoggleServer(props.todo.id);
   };
 
   const handleRemove = () => {
@@ -19,14 +23,44 @@ const TodoItem = (props: TodoItemProps) => {
     props.removeTodo(props.todo.id);
   };
 
-  /*   const handleRemoveServer = (todo: any) => {
-    fetch(`http://localhost:5000/task/${todo}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
-  }; */
+  const handleToggleServer = async (todo: any) => {
+    try {
+      const response = await fetch(`http://localhost:5000/task/check/${todo}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          checked: !todo.checked,
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUntoggleServer = async (todo: any) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/task/uncheck/${todo}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            checked: todo.checked,
+          }),
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleRemoveServer = async (todo: any) => {
     try {
@@ -44,7 +78,13 @@ const TodoItem = (props: TodoItemProps) => {
   return (
     <div>
       <h2></h2>
-      <input type="checkbox" id="toggle" name="toggle" onClick={handleToggle} />
+      <input
+        type="checkbox"
+        id="toggle"
+        name="toggle"
+        checked={props.todo.checked}
+        onChange={handleToggle}
+      />
       <label htmlFor="toggle">{props.todo.content}</label>
       <VscClose onClick={handleRemove} />
       <br />

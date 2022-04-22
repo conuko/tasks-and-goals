@@ -1,5 +1,3 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
 
 interface IndexProps {
@@ -7,21 +5,6 @@ interface IndexProps {
 }
 
 const Index = (props: IndexProps) => {
-  //const [user, setUser] = useContext(UserContext);
-  /*   const [user, setUser] = useState({
-    id: "",
-    name: "",
-    email: "",
-  }); */
-
-  /*   const addUser = (data: { id: any; name: any; email: any; }) => {
-    setUser({
-      id: data.id,
-      name: data.name,
-      email: data.email,
-    });
-  } */
-
   return (
     <div>
       <h1>The Modern To Do Application</h1>
