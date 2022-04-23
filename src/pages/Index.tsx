@@ -8,9 +8,9 @@ interface IndexProps {
 const Index = (props: IndexProps) => {
   return (
     <div>
-      <h1>The Modern To Do Application</h1>
+      <h1 className="header-primary">The Modern To Do Application</h1>
       <br />
-      <h2>Welcome!</h2>
+      <p>Welcome!</p>
       {props.user === "" ? (
         <div>
           <p>To proceed please register or login. Thank you!</p>
@@ -18,15 +18,13 @@ const Index = (props: IndexProps) => {
             <button>
               <Link to="/register">Register</Link>
             </button>
-            <button>
-              <Link to="/login">Login</Link>
-            </button>
+            <Link to="/login">Sign in</Link>
           </div>
         </div>
       ) : (
         <div>
           <div>{props.user}</div>
-          <button onClick={props.removeUser}>Logout</button>
+          <button onClick={props.removeUser}>Sign Out</button>
         </div>
       )}
     </div>

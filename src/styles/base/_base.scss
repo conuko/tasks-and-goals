@@ -17,8 +17,9 @@ html {
 
 body {
   box-sizing: border-box;
+  font-size: 1.8rem;
   line-height: 1.6;
-  background-color: white;
+  background-color: colors.$color-background;
   color: colors.$color-primary;
   overflow-x: hidden;
 }
@@ -29,14 +30,12 @@ body {
 }
 
 a {
-  color: colors.$color-black;
+  color: colors.$color-primary;
+  font-weight: bold;
   &,
   &:link,
   &:visited {
     text-decoration: none;
     transition: all 0.2s;
-  }
-  &:hover {
-    color: colors.$color-primary;
   }
 }

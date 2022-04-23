@@ -1,0 +1,23 @@
+@use "../base/colors";
+
+button {
+  text-decoration: none;
+  border: none;
+  padding: 1rem 1.4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: colors.$color-primary;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 1;
+  background: colors.$color-secondary;
+  border-radius: 1.2rem;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  &:hover {
+    background: colors.$color-tertiary;
+  }
+  &:active {
+    background: colors.$color-quaternary;
+  }
+}

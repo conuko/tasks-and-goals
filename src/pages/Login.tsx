@@ -29,7 +29,7 @@ const Login = (props: LoginProps) => {
   };
 
   if (localStorage.getItem("user")) {
-    return <div>You are already logged in</div>;
+    return <div>You are already signed in</div>;
   }
 
   return (
@@ -49,7 +49,7 @@ const Login = (props: LoginProps) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <label htmlFor="password">Password</label>
-        <button type="submit">Login</button>
+        <button type="submit">Sign in</button>
       </form>
     </div>
   );
