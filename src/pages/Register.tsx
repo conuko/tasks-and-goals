@@ -11,7 +11,6 @@ const Register = (props: RegisterProps) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(`${userName} ${email} ${password}`);
     fetch("http://localhost:5000/auth/", {
       method: "POST",
       headers: {
