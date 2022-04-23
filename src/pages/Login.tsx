@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface LoginProps {
   addUser: Function;
@@ -7,6 +8,8 @@ interface LoginProps {
 const Login = (props: LoginProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -24,6 +27,7 @@ const Login = (props: LoginProps) => {
       .then((data) => {
         console.log(data);
         props.addUser(data.data);
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };
@@ -34,22 +38,28 @@ const Login = (props: LoginProps) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="flex-column" onSubmit={handleSubmit}>
         <input
+          className="mt-medium"
           id="email"
           name="email"
           type="email"
+          placeholder="E-Mail"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="email">E-Mail</label>
+        <label htmlFor="email"></label>
         <input
+          className="mt-medium"
           id="password"
           name="password"
           type="password"
+          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
-        <button type="submit">Sign in</button>
+        <label htmlFor="password"></label>
+        <button className="mt-medium" type="submit">
+          Sign in
+        </button>
       </form>
     </div>
   );

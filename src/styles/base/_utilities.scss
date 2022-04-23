@@ -5,12 +5,14 @@
 }
 .flex-column {
   display: flex;
-  justify-content: column !important;
-  align-items: column;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center;
 }
 .flex-row {
   display: flex;
-  justify-content: row;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
 }
 

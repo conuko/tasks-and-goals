@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import "./styles/main.scss";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Register from "./pages/Register";
 import Login from "./pages/Login";

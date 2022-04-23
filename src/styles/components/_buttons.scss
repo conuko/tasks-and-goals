@@ -20,4 +20,9 @@ button {
   &:active {
     background: colors.$color-quaternary;
   }
+  &:disabled {
+    background: colors.$color-grey;
+    color: colors.$color-white;
+    cursor: not-allowed;
+  }
 }

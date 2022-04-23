@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface RegisterProps {
   addUser: Function;
@@ -8,6 +9,8 @@ const Register = (props: RegisterProps) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -26,6 +29,7 @@ const Register = (props: RegisterProps) => {
       .then((data) => {
         console.log(data);
         props.addUser(data.data);
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };
@@ -36,8 +40,9 @@ const Register = (props: RegisterProps) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="flex-column" onSubmit={handleSubmit}>
         <input
+          className="mt-medium"
           id="user"
           name="user"
           type="text"
@@ -45,8 +50,9 @@ const Register = (props: RegisterProps) => {
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
-        <label htmlFor="user">Username</label>
+        <label htmlFor="user"></label>
         <input
+          className="mt-medium"
           id="email"
           name="email"
           type="email"
@@ -54,8 +60,9 @@ const Register = (props: RegisterProps) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="email">E-Mail</label>
+        <label htmlFor="email"></label>
         <input
+          className="mt-medium"
           id="password"
           name="password"
           type="password"
@@ -63,8 +70,8 @@ const Register = (props: RegisterProps) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
-        <button>Register</button>
+        <label htmlFor="password"></label>
+        <button className="mt-medium">Register</button>
       </form>
     </div>
   );
