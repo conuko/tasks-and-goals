@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 interface AddTodoProps {
   addTodo: any;
@@ -13,12 +14,18 @@ const AddTodo = (props: AddTodoProps) => {
     authorEmail: "",
   });
 
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
   const handleChange = (e: any) => {
     setTodo({ ...todo, content: e.target.value });
   };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const handleOnSubmit = (e: any) => {
     //const id = uuid();
     const authorEmail = props.user.email;
     if (todo.content.trim()) {
@@ -46,9 +53,16 @@ const AddTodo = (props: AddTodoProps) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="flex-column">
+      <form onSubmit={handleSubmit(handleOnSubmit)}>
         <input
+          {...register("task", {
+            maxLength: {
+              value: 30,
+              message: "Not more than 30 characters are allowed",
+            },
+          })}
+          className="mr-medium"
           type="text"
           name="task"
           id="task"
@@ -59,6 +73,7 @@ const AddTodo = (props: AddTodoProps) => {
           Add
         </button>
       </form>
+      <span>{errors.task?.message}</span>
     </div>
   );
 };

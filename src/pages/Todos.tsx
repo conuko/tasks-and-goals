@@ -45,7 +45,7 @@ const Todos = (props: TodoProps) => {
     <div>
       <div>
         <AddTodo addTodo={addTodo} user={props.user} />
-        <ul>
+        <ul className="flex-column">
           {todos.map((todo, index) => (
             <TodoItem
               key={index}

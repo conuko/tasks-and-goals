@@ -7,3 +7,20 @@ input {
   margin-right: -2rem;
   width: auto;
 }
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox:checked + label {
+  color: $color-secondary;
+  text-decoration: line-through;
+}
+
+label {
+  cursor: pointer;
+}

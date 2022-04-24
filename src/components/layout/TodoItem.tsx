@@ -76,9 +76,9 @@ const TodoItem = (props: TodoItemProps) => {
   };
 
   return (
-    <div>
-      <h2></h2>
+    <div className="todo mt-medium">
       <input
+        className="checkbox"
         type="checkbox"
         id="toggle"
         name="toggle"
@@ -86,7 +86,7 @@ const TodoItem = (props: TodoItemProps) => {
         onChange={handleToggle}
       />
       <label htmlFor="toggle">{props.todo.content}</label>
-      <VscClose onClick={handleRemove} />
+      <VscClose className="todo__close" onClick={handleRemove} />
       <br />
     </div>
   );
