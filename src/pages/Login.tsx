@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 interface LoginProps {
   addUser: Function;
@@ -9,10 +10,23 @@ const Login = (props: LoginProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    mode: "onSubmit",
+    reValidateMode: "onChange",
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
   const navigate = useNavigate();
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const handleOnSubmit = (e: any) => {
     fetch("http://localhost:5000/auth/login", {
       method: "POST",
       headers: {
@@ -38,8 +52,15 @@ const Login = (props: LoginProps) => {
 
   return (
     <div>
-      <form className="flex-column" onSubmit={handleSubmit}>
+      <form className="flex-column" onSubmit={handleSubmit(handleOnSubmit)}>
         <input
+          {...register("email", {
+            required: "This field is required",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+              message: "invalid email address",
+            },
+          })}
           className="mt-medium"
           id="email"
           name="email"
@@ -47,8 +68,12 @@ const Login = (props: LoginProps) => {
           placeholder="E-Mail"
           onChange={(e) => setEmail(e.target.value)}
         />
+        <span>{errors.email?.message}</span>
         <label htmlFor="email"></label>
         <input
+          {...register("password", {
+            required: "This field is required",
+          })}
           className="mt-medium"
           id="password"
           name="password"
@@ -56,6 +81,7 @@ const Login = (props: LoginProps) => {
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
+        <span>{errors.password?.message}</span>
         <label htmlFor="password"></label>
         <button className="mt-medium" type="submit">
           Sign in

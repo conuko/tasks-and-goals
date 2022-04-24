@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 interface RegisterProps {
   addUser: Function;
@@ -10,10 +11,24 @@ const Register = (props: RegisterProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    mode: "onSubmit",
+    reValidateMode: "onChange",
+    defaultValues: {
+      user: "",
+      email: "",
+      password: "",
+    },
+  });
+
   const navigate = useNavigate();
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const handleOnSubmit = (e: any) => {
     fetch("http://localhost:5000/auth/", {
       method: "POST",
       headers: {
@@ -40,8 +55,9 @@ const Register = (props: RegisterProps) => {
 
   return (
     <div>
-      <form className="flex-column" onSubmit={handleSubmit}>
+      <form className="flex-column" onSubmit={handleSubmit(handleOnSubmit)}>
         <input
+          {...register("user", { required: "This field is required" })}
           className="mt-medium"
           id="user"
           name="user"
@@ -50,8 +66,15 @@ const Register = (props: RegisterProps) => {
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
-        <label htmlFor="user"></label>
+        <span>{errors.user?.message}</span>
         <input
+          {...register("email", {
+            required: "This field is required",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+              message: "invalid email address",
+            },
+          })}
           className="mt-medium"
           id="email"
           name="email"
@@ -60,8 +83,15 @@ const Register = (props: RegisterProps) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="email"></label>
+        <span>{errors.email?.message}</span>
         <input
+          {...register("password", {
+            required: "This field is required",
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters long",
+            },
+          })}
           className="mt-medium"
           id="password"
           name="password"
@@ -70,7 +100,7 @@ const Register = (props: RegisterProps) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <label htmlFor="password"></label>
+        <span>{errors.password?.message}</span>
         <button className="mt-medium">Register</button>
       </form>
     </div>

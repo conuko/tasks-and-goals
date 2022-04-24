@@ -39,3 +39,9 @@ a {
     transition: all 0.2s;
   }
 }
+
+span {
+  font-size: 1rem;
+  font-weight: bold;
+  color: colors.$color-error;
+}
