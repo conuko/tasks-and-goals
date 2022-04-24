@@ -1,4 +1,4 @@
-input {
+input[type="text"] {
   font-size: 1.8rem;
   outline: $color-grey;
   border: 1px solid $color-grey;
@@ -9,7 +9,6 @@ input {
 }
 
 .checkbox {
-  position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;

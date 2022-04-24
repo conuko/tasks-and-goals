@@ -80,14 +80,13 @@ const TodoItem = (props: TodoItemProps) => {
       <input
         className="checkbox"
         type="checkbox"
-        id="toggle"
+        id={props.todo.content}
         name="toggle"
         checked={props.todo.checked}
         onChange={handleToggle}
       />
-      <label htmlFor="toggle">{props.todo.content}</label>
+      <label htmlFor={props.todo.content}>{props.todo.content}</label>
       <VscClose className="todo__close" onClick={handleRemove} />
-      <br />
     </div>
   );
 };
