@@ -61,7 +61,7 @@ const Login = (props: LoginProps) => {
               message: "invalid email address",
             },
           })}
-          className="mt-medium"
+          className="input mt-medium"
           id="email"
           name="email"
           type="email"
@@ -74,7 +74,7 @@ const Login = (props: LoginProps) => {
           {...register("password", {
             required: "This field is required",
           })}
-          className="mt-medium"
+          className="input mt-medium"
           id="password"
           name="password"
           type="password"

@@ -58,7 +58,7 @@ const Register = (props: RegisterProps) => {
       <form className="flex-column" onSubmit={handleSubmit(handleOnSubmit)}>
         <input
           {...register("user", { required: "This field is required" })}
-          className="mt-medium"
+          className="input mt-medium"
           id="user"
           name="user"
           type="text"
@@ -75,7 +75,7 @@ const Register = (props: RegisterProps) => {
               message: "invalid email address",
             },
           })}
-          className="mt-medium"
+          className="input mt-medium"
           id="email"
           name="email"
           type="email"
@@ -92,7 +92,7 @@ const Register = (props: RegisterProps) => {
               message: "Password must be at least 8 characters long",
             },
           })}
-          className="mt-medium"
+          className="input mt-medium"
           id="password"
           name="password"
           type="password"

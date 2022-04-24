@@ -62,7 +62,7 @@ const AddTodo = (props: AddTodoProps) => {
               message: "Not more than 30 characters are allowed",
             },
           })}
-          className="mr-medium"
+          className="input mr-medium"
           type="text"
           name="task"
           id="task"
