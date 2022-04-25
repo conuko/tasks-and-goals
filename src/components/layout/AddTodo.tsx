@@ -67,6 +67,7 @@ const AddTodo = (props: AddTodoProps) => {
           name="task"
           id="task"
           placeholder="Add a task"
+          value={todo.content}
           onChange={handleChange}
         />
         <button type="submit" disabled={todo.content === ""}>
