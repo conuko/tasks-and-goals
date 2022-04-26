@@ -1,0 +1,13 @@
+.todos {
+  height: 60vh;
+}
+
+.todos__list {
+  overflow: scroll;
+}
+
+@media screen and (max-width: 768px) {
+  .todos {
+    height: 50vh;
+  }
+}

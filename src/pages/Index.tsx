@@ -12,7 +12,7 @@ const Index = (props: IndexProps) => {
       <br />
       <p>Welcome!</p>
       {props.user === "" ? (
-        <div>
+        <div className="flex-column">
           <p>To proceed please register or login. Thank you!</p>
           <div>
             <div className="flex-column">
@@ -26,7 +26,7 @@ const Index = (props: IndexProps) => {
           </div>
         </div>
       ) : (
-        <div>
+        <div className="flex-column">
           <div>{props.user}</div>
           <button className="mt-medium" onClick={props.removeUser}>
             Sign Out

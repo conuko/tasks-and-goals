@@ -7,6 +7,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Index from "./pages/Index";
@@ -71,6 +72,7 @@ const App = () => {
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };

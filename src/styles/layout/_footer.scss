@@ -1,0 +1,17 @@
+.footer {
+  font-size: 1.6rem;
+  font-weight: 300;
+  height: calc(100% - 146px);
+}
+
+.footer__child {
+  height: 146px;
+  padding: 6rem 2rem;
+  text-align: center;
+  background-color: $color-primary;
+  color: $color-white;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
