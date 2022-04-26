@@ -4,11 +4,15 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <ul className="navbar__list">
-        <li className="navbar__element">
-          <Link to="/">Home</Link>
+        <li>
+          <Link className="navbar__element" to="/">
+            Home
+          </Link>
         </li>
-        <li className="navbar__element">
-          <Link to="/todos">Todos</Link>
+        <li>
+          <Link className="navbar__element" to="/todos">
+            Todos
+          </Link>
         </li>
       </ul>
     </nav>
