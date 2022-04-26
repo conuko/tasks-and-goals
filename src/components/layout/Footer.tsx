@@ -1,3 +1,6 @@
+import GitHubIcon from "../../assets/icons8-github.svg?component";
+import LinkedInIcon from "../../assets/icons8-linkedin.svg?component";
+
 const Footer = () => {
   return (
     <footer className="footer">
@@ -5,35 +8,22 @@ const Footer = () => {
         <div>
           <p>
             <strong>Shortlist</strong> by{" "}
-            <a href="" target="_blank">
-              @matthewjames
+            <a
+              className="footer__link"
+              href="https://github.com/conuko"
+              target="_blank"
+            >
+              @conuko
             </a>
-            . The source code is licensed{" "}
-            <a href="" target="_blank">
-              MIT
+            <br />
+            <a href="http://www.github.com/conuko" target="_blank">
+              <GitHubIcon className="footer__icon" />
             </a>
-            . The website content is licensed{" "}
-            <a href="" target="_blank">
-              CC BY-NC-SA 4.0
-            </a>
-            .
-          </p>
-          <p>
-            <a className="icon" href="" target="_blank">
-              {" "}
-              <i className="fa fa-github"></i>{" "}
-            </a>{" "}
-            <a className="icon" href="" target="_blank">
-              {" "}
-              <i className="fa fa-twitter"></i>{" "}
-            </a>{" "}
-            <a className="icon" href="" target="_blank">
-              {" "}
-              <i className="fa fa-facebook"></i>{" "}
-            </a>{" "}
-            <a className="icon" href="" target="_blank">
-              {" "}
-              <i className="fa fa-instagram"></i>{" "}
+            <a
+              href="https://www.linkedin.com/in/constantin-unterkofler"
+              target="_blank"
+            >
+              <LinkedInIcon className="footer__icon" />
             </a>
           </p>
         </div>

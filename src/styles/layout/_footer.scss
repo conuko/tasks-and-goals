@@ -6,7 +6,7 @@
 
 .footer__child {
   height: 146px;
-  padding: 6rem 2rem;
+  padding: 4rem 2rem;
   text-align: center;
   background-color: $color-primary;
   color: $color-white;
@@ -14,4 +14,17 @@
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+.footer__link {
+  color: $color-secondary !important;
+  &:hover {
+    color: $color-tertiary !important;
+  }
+}
+
+.footer__icon {
+  margin-top: 1rem;
+  height: 4rem;
+  width: 4rem;
 }
