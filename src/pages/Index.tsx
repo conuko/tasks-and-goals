@@ -8,7 +8,8 @@ interface IndexProps {
 const Index = (props: IndexProps) => {
   return (
     <div className="flex-column">
-      <h1 className="header-primary">The Modern To Do Application</h1>
+      <h1 className="header-large">Shortlist</h1>
+      <h2 className="header-secondary">The Modern To Do Application</h2>
       <br />
       <p>Welcome!</p>
       {props.user === "" ? (
