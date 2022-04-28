@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 
 interface AddTodoProps {
   addTodo: any;
@@ -14,15 +16,19 @@ const AddTodo = (props: AddTodoProps) => {
     authorEmail: "",
   });
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  // form validation rules
+  const validationSchema = Yup.object().shape({
+    task: Yup.string().max(30, "A task cannot be more than 30 characters"),
+  });
+  const formOptions = { resolver: yupResolver(validationSchema) };
 
-  const handleChange = (e: any) => {
-    setTodo({ ...todo, content: e.target.value });
+  const { register, handleSubmit, setValue, reset, formState } =
+    useForm(formOptions);
+  const { errors } = formState;
+
+  const handleOnChange = (c: any) => {
+    setValue(c.target.name, c.target.value);
+    setTodo({ ...todo, content: c.target.value });
   };
 
   const handleOnSubmit = (e: any) => {
@@ -56,19 +62,13 @@ const AddTodo = (props: AddTodoProps) => {
     <div className="flex-column">
       <form onSubmit={handleSubmit(handleOnSubmit)}>
         <input
-          {...register("task", {
-            maxLength: {
-              value: 30,
-              message: "Not more than 30 characters are allowed",
-            },
-          })}
+          {...register("task")}
           className="input mr-medium"
           type="text"
           name="task"
           id="task"
           placeholder="Add a task"
-          value={todo.content}
-          onChange={handleChange}
+          onChange={(c) => handleOnChange(c)}
         />
         <button type="submit" disabled={todo.content === ""}>
           Add
