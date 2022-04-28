@@ -1,6 +1,8 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 
 interface RegisterProps {
   addUser: Function;
@@ -11,22 +13,38 @@ const Register = (props: RegisterProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm({
-    mode: "onSubmit",
-    reValidateMode: "onChange",
-    defaultValues: {
-      user: "",
-      email: "",
-      password: "",
-    },
+  // form validation rules
+  const validationSchema = Yup.object().shape({
+    user: Yup.string().required("User Name is required"),
+    email: Yup.string().required("Email is required").email("Email is invalid"),
+    password: Yup.string()
+      .min(8, "Password must be at least 8 characters")
+      .required("Password is required"),
   });
+  const formOptions = { resolver: yupResolver(validationSchema) };
+
+  const { register, handleSubmit, setValue, reset, formState } =
+    useForm(formOptions);
+  const { errors } = formState;
+
+  const touchDirtyValidate = {
+    shouldTouch: true,
+    shouldDirty: true,
+    shouldValidate: true,
+  };
 
   const navigate = useNavigate();
+
+  const handleOnChange = (c: { target: { name: any; value: any } }) => {
+    setValue(c.target.name, c.target.value, touchDirtyValidate);
+    if (c.target.name === "user") {
+      setUserName(c.target.value);
+    } else if (c.target.name === "email") {
+      setEmail(c.target.value);
+    } else if (c.target.name === "password") {
+      setPassword(c.target.value);
+    }
+  };
 
   const handleOnSubmit = () => {
     fetch("https://shortlist-backend.herokuapp.com/auth", {
@@ -56,48 +74,33 @@ const Register = (props: RegisterProps) => {
     <div>
       <form className="flex-column" onSubmit={handleSubmit(handleOnSubmit)}>
         <input
-          {...register("user", { required: "This field is required" })}
+          {...register("user")}
           className="input mt-medium"
           id="user"
           name="user"
           type="text"
           placeholder="User Name"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
+          onChange={(c) => handleOnChange(c)}
         />
         <span>{errors.user?.message}</span>
         <input
-          {...register("email", {
-            required: "This field is required",
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-              message: "invalid email address",
-            },
-          })}
+          {...register("email")}
           className="input mt-medium"
           id="email"
           name="email"
           type="email"
           placeholder="E-Mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(c) => handleOnChange(c)}
         />
         <span>{errors.email?.message}</span>
         <input
-          {...register("password", {
-            required: "This field is required",
-            minLength: {
-              value: 8,
-              message: "Password must be at least 8 characters long",
-            },
-          })}
+          {...register("password")}
           className="input mt-medium"
           id="password"
           name="password"
           type="password"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(c) => handleOnChange(c)}
         />
         <span>{errors.password?.message}</span>
         <button className="mt-medium">Register</button>
