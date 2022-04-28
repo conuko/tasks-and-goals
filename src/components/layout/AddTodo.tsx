@@ -26,8 +26,14 @@ const AddTodo = (props: AddTodoProps) => {
     useForm(formOptions);
   const { errors } = formState;
 
+  const touchDirtyValidate = {
+    shouldTouch: true,
+    shouldDirty: true,
+    shouldValidate: true,
+  };
+
   const handleOnChange = (c: any) => {
-    setValue(c.target.name, c.target.value);
+    setValue(c.target.name, c.target.value, touchDirtyValidate);
     setTodo({ ...todo, content: c.target.value });
   };
 
@@ -42,6 +48,7 @@ const AddTodo = (props: AddTodoProps) => {
       props.addTodo({ ...todo, authorEmail });
       // sets the form text back to empty, after the item was added to the "items" state via the "addItem" callback function:
       setTodo({ ...todo, content: "" });
+      setValue("task", "");
     }
   };
 
@@ -70,7 +77,7 @@ const AddTodo = (props: AddTodoProps) => {
           placeholder="Add a task"
           onChange={(c) => handleOnChange(c)}
         />
-        <button type="submit" disabled={todo.content === ""}>
+        <button type="submit" disabled={todo.content === "" || errors.task}>
           Add
         </button>
       </form>
