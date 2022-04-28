@@ -33,6 +33,16 @@ const Login = (props: LoginProps) => {
 
   const navigate = useNavigate();
 
+  const isDisabled = () => {
+    if (!email || !password) {
+      return true;
+    } else if (errors.email || errors.password) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const handleOnChange = (c: { target: { name: any; value: any } }) => {
     setValue(c.target.name, c.target.value, touchDirtyValidate);
     if (c.target.name === "email") {
@@ -97,7 +107,7 @@ const Login = (props: LoginProps) => {
         />
         <span>{errors.password?.message}</span>
         <label htmlFor="password"></label>
-        <button className="mt-medium" type="submit">
+        <button className="mt-medium" type="submit" disabled={isDisabled()}>
           Sign in
         </button>
       </form>

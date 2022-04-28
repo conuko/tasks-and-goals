@@ -35,6 +35,16 @@ const Register = (props: RegisterProps) => {
 
   const navigate = useNavigate();
 
+  const isDisabled = () => {
+    if (!userName || !email || !password) {
+      return true;
+    } else if (errors.user || errors.email || errors.password) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const handleOnChange = (c: { target: { name: any; value: any } }) => {
     setValue(c.target.name, c.target.value, touchDirtyValidate);
     if (c.target.name === "user") {
@@ -103,7 +113,9 @@ const Register = (props: RegisterProps) => {
           onChange={(c) => handleOnChange(c)}
         />
         <span>{errors.password?.message}</span>
-        <button className="mt-medium">Register</button>
+        <button className="mt-medium" disabled={isDisabled()}>
+          Register
+        </button>
       </form>
     </div>
   );
