@@ -40,7 +40,7 @@ const AddTodo = (props: AddTodoProps) => {
   };
 
   const addTodoToServer = (todo: any) => {
-    fetch("http://localhost:5000/task/", {
+    fetch("https://shortlist-backend.herokuapp.com/task/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

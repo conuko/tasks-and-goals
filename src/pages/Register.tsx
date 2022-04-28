@@ -28,8 +28,8 @@ const Register = (props: RegisterProps) => {
 
   const navigate = useNavigate();
 
-  const handleOnSubmit = (e: any) => {
-    fetch("http://localhost:5000/auth/", {
+  const handleOnSubmit = () => {
+    fetch("https://shortlist-backend.herokuapp.com/auth", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +42,6 @@ const Register = (props: RegisterProps) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         props.addUser(data.data);
         navigate("/");
       })
