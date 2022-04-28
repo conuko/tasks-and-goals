@@ -10,13 +10,16 @@ const Todos = (props: TodoProps) => {
   const [todos, setTodos] = React.useState<any[]>([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/tasks/author/${props.user.email}`, {
-      headers: {
-        "Content-Type": "application/json",
-        authorization: "Bearer " + props.user.accessToken,
-        Accept: "application/json",
-      },
-    })
+    fetch(
+      `https://shortlist-backend.herokuapp.com/tasks/author/${props.user.email}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + props.user.accessToken,
+          Accept: "application/json",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         setTodos(data);

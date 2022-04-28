@@ -26,8 +26,8 @@ const Login = (props: LoginProps) => {
 
   const navigate = useNavigate();
 
-  const handleOnSubmit = (e: any) => {
-    fetch("http://localhost:5000/auth/login", {
+  const handleOnSubmit = () => {
+    fetch("https://shortlist-backend.herokuapp.com/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,9 +37,11 @@ const Login = (props: LoginProps) => {
         password: password,
       }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
       .then((data) => {
-        console.log(data);
         props.addUser(data.data);
         navigate("/");
       })
