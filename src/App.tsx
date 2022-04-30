@@ -31,7 +31,12 @@ const App = () => {
     }
   }, []);
 
-  const addUser = (data) => {
+  const addUser = (data: {
+    id: any;
+    name: any;
+    email: any;
+    accessToken: any;
+  }) => {
     setUser({
       id: data.id,
       name: data.name,
@@ -57,7 +62,6 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          exact
           element={<Index user={user.name} removeUser={removeUser} />}
         />
         <Route path="/register" element={<Register addUser={addUser} />} />
@@ -65,7 +69,7 @@ const App = () => {
         <Route
           path="/todos"
           element={
-            <ProtectedRoute user={user.name}>
+            <ProtectedRoute>
               <Todos user={user} />
             </ProtectedRoute>
           }

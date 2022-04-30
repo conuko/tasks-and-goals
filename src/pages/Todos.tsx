@@ -76,17 +76,23 @@ const Todos = (props: TodoProps) => {
   }, [todo]);
 
   // add todo to the server
-  const addTodoToServer = (todo: any) => {
-    fetch("https://shortlist-backend.herokuapp.com/task/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(todo),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+  const addTodoToServer = async (todo: any) => {
+    try {
+      const response = await fetch(
+        `https://shortlist-backend.herokuapp.com/task`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(todo),
+        }
+      );
+      const data = await response.json();
+      // console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // callback function to remove todo from the todos state:
@@ -126,7 +132,7 @@ const Todos = (props: TodoProps) => {
         {isLoading ? (
           <div>Loading...</div>
         ) : (
-          <ul className="todos__list flex-column">
+          <ul>
             {todos.map((todo, index) => (
               <TodoItem
                 key={index}

@@ -1,12 +1,11 @@
 import { Navigate } from "react-router-dom";
 
 interface ProtectedRouteProps {
-  user: any;
-  children: React.ReactNode;
+  children: any;
 }
 
 const ProtectedRoute = (props: ProtectedRouteProps) => {
-  if (props.user === "") {
+  if (!localStorage.getItem("user")) {
     return <Navigate to="/" replace />;
   }
   return props.children;
