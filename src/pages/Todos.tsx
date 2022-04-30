@@ -126,7 +126,7 @@ const Todos = (props: TodoProps) => {
         {isLoading ? (
           <div>Loading...</div>
         ) : (
-          <ul className="todos__list flex-column">
+          <ul>
             {todos.map((todo, index) => (
               <TodoItem
                 key={index}
