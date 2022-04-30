@@ -64,8 +64,7 @@ const Login = (props: LoginProps) => {
       }),
     })
       .then((res) => {
-        console.log(res);
-        if (res.status === 401) {
+        if (!(res.status === 200)) {
           alert("Invalid email or password");
         } else {
           return res.json();
