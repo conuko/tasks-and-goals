@@ -8,8 +8,10 @@ interface TodoProps {
 
 const Todos = (props: TodoProps) => {
   const [todos, setTodos] = React.useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(
       `https://shortlist-backend.herokuapp.com/tasks/author/${props.user.email}`,
       {
@@ -23,6 +25,7 @@ const Todos = (props: TodoProps) => {
       .then((response) => response.json())
       .then((data) => {
         setTodos(data);
+        setIsLoading(false);
       });
   }, []);
 
@@ -46,18 +49,22 @@ const Todos = (props: TodoProps) => {
 
   return (
     <div className="todos">
-      <div>
+      <div className="flex-column">
         <AddTodo addTodo={addTodo} user={props.user} />
-        <ul className="todos__list flex-column">
-          {todos.map((todo, index) => (
-            <TodoItem
-              key={index}
-              todo={todo}
-              toggleTodo={toggleTodo}
-              removeTodo={removeTodo}
-            />
-          ))}
-        </ul>
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <ul className="todos__list flex-column">
+            {todos.map((todo, index) => (
+              <TodoItem
+                key={index}
+                todo={todo}
+                toggleTodo={toggleTodo}
+                removeTodo={removeTodo}
+              />
+            ))}
+          </ul>
+        )}
       </div>
       <br />
     </div>
