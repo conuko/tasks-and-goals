@@ -16,13 +16,15 @@ This is the FrontEnd of Shortlist - the modern To Do Application.
 4. Client Side Form Validation with [yup](https://github.com/jquense/yup) and [React Hook Form](https://react-hook-form.com/).
 
 ## Architecture
+![Flow Chart FE, BE, DB](https://user-images.githubusercontent.com/50672977/166143979-b46d53dc-c5a2-4188-9867-ac67b5eebc19.png)
+
 
 ## Usage
 
-1. The user can Signin or Register.
-2. After Signin or Register, the user can see his home screen with his name and his functions.
-3. The user can go to his To Do List.
-4. The user can add a new To Do that is not longer than 30 characters (it's a short-list :-)).
+1. The user can Signin (`/login`) or Register (`/register`).
+2. After Signin or Register, the user can see his home screen with his name and his functions (`/`).
+3. The user can go to his To Do List (`/todos`).
+4. The user can add a new To Do that is not longer than 30 characters.
 5. The user can see a list of his own To Dos.
 6. The user can toggle/untoggle a To Do.
 7. The user can delete a To Do.
