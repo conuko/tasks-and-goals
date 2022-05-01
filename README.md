@@ -8,7 +8,6 @@ This is the FrontEnd of Shortlist - the modern To Do Application.
 - [Architecture](#architecture)
 - [Usage](#usage)
 - [Authentication](#authentication)
-- [Functionality](#functionality)
 - [Back End](#back-end)
 
 ## Getting Started
