@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 import "./styles/main.scss";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Register from "./pages/Register";

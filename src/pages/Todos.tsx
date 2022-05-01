@@ -34,16 +34,19 @@ const Todos = (props: TodoProps) => {
     shouldValidate: true,
   };
 
+  // get user data of local storage to provide data also when reloading page
+  const userLocal = JSON.parse(localStorage.getItem("user") || "{}");
+
   // async fetch todos function
   const fetchTodos = async () => {
     try {
       todo.content === "" && setIsLoading(true);
       const response = await fetch(
-        `https://shortlist-backend.herokuapp.com/tasks/author/${props.user.email}`,
+        `https://shortlist-backend.herokuapp.com/tasks/author/${userLocal.email}`,
         {
           headers: {
             "Content-Type": "application/json",
-            authorization: `Bearer ${props.user.accessToken}`,
+            authorization: `Bearer ${userLocal.accessToken}`,
             Accept: "application/json",
           },
         }

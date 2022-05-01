@@ -38,7 +38,6 @@ const TodoItem = (props: TodoItemProps) => {
         }
       );
       const data = await response.json();
-      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -59,7 +58,6 @@ const TodoItem = (props: TodoItemProps) => {
         }
       );
       const data = await response.json();
-      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -75,7 +73,6 @@ const TodoItem = (props: TodoItemProps) => {
         }
       );
       const data = await response.json();
-      console.log(data);
     } catch (err) {
       console.log(err);
     }

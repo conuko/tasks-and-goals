@@ -33,6 +33,14 @@ This is the FrontEnd of Shortlist - the modern To Do Application.
 - Uses JWT for token-based authentication. [JSON Web Token](https://jwt.io/)
 - Uses bcrypt for securely hash and salt passwords. [bcrypt](https://www.npmjs.com/package/bcryptjs)
 
+- **Functinality:**
+  - When the user registers or logs in successfully, the server sends a jwt access token to the client.
+  - The jwt access token is stored in the browser's local storage.
+  - The jwt access token is then used to authenticate the user.
+  - When the user wants to access the /todos route, the ProtectedRoute is used to check if the user is authenticated by checking the jwt access token in the local storage.
+  - When the user wants to render his todos, the server checks if the user is authenticated. For this, the client sends a request to the server to the /tasks/author/:email route with the access token.
+  - The user can logout by deleting the jwt access token from the local storage.
+
 ![Authentication](https://user-images.githubusercontent.com/50672977/166125473-7d32be27-ef26-4053-8c7a-0bc0a4cabf8d.png)
 
 ## Back End
