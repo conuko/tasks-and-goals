@@ -2,6 +2,15 @@
 
 This is the FrontEnd of Shortlist - the modern To Do Application.
 
+## Summary
+- [Getting Started](#getting-started)
+- [Tech Stack](#tech-stack)
+- [Architecture](#architecture)
+- [Usage](#usage)
+- [Authentication](#authentication)
+- [Functionality](#functionality)
+- [Back End](#back-end)
+
 ## Getting Started
 
 1. `yarn` to install deps.
