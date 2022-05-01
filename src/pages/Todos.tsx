@@ -34,6 +34,33 @@ const Todos = (props: TodoProps) => {
     shouldValidate: true,
   };
 
+  // async fetch todos function
+  const fetchTodos = async () => {
+    try {
+      todo.content === "" && setIsLoading(true);
+      const response = await fetch(
+        `https://shortlist-backend.herokuapp.com/tasks/author/${props.user.email}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${props.user.accessToken}`,
+            Accept: "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      setTodos(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // fetch all todos from server everytime the todo state changes
+  useEffect(() => {
+    fetchTodos();
+  }, [todo]);
+
   // change and submit handler for addtodo input form
   const handleOnChange = (c: any) => {
     setValue(c.target.name, c.target.value, touchDirtyValidate);
@@ -54,26 +81,6 @@ const Todos = (props: TodoProps) => {
       setValue("task", "");
     }
   };
-
-  // fetch all todos from server everytime the todo state changes
-  useEffect(() => {
-    todo.content === "" && setIsLoading(true);
-    fetch(
-      `https://shortlist-backend.herokuapp.com/tasks/author/${props.user.email}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          authorization: "Bearer " + props.user.accessToken,
-          Accept: "application/json",
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setTodos(data);
-        setIsLoading(false);
-      });
-  }, [todo]);
 
   // add todo to the server
   const addTodoToServer = async (todo: any) => {
