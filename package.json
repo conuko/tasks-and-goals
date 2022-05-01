@@ -21,7 +21,6 @@
 		"yup": "^0.32.11"
 	},
 	"devDependencies": {
-		"@honkhonk/vite-plugin-svgr": "^1.1.0",
 		"@testing-library/jest-dom": "^5.16.4",
 		"@testing-library/react": "^12.1.5",
 		"@testing-library/react-hooks": "^8.0.0",

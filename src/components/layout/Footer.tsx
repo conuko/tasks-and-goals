@@ -1,5 +1,5 @@
-import GitHubIcon from "../../assets/icons8-github.svg?component";
-import LinkedInIcon from "../../assets/icons8-linkedin.svg?component";
+import GitHub from "../../assets/images/icons8-github-48.png";
+import LinkedIn from "../../assets/images/icons8-linkedin-48.png";
 
 const Footer = () => {
   return (
@@ -17,13 +17,13 @@ const Footer = () => {
             </a>
             <br />
             <a href="http://www.github.com/conuko" target="_blank">
-              <GitHubIcon className="footer__icon" />
+              <img className="footer__icon" src={GitHub} />
             </a>
             <a
               href="https://www.linkedin.com/in/constantin-unterkofler"
               target="_blank"
             >
-              <LinkedInIcon className="footer__icon" />
+              <img className="footer__icon" src={LinkedIn} />
             </a>
           </p>
         </div>
