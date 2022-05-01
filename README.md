@@ -35,7 +35,7 @@ This is the FrontEnd of Shortlist - the modern To Do Application.
 - Uses JWT for token-based authentication. [JSON Web Token](https://jwt.io/)
 - Uses bcrypt for securely hash and salt passwords. [bcrypt](https://www.npmjs.com/package/bcryptjs)
 
-- **Functinality:**
+- **Functionality:**
   - When the user registers or logs in successfully, the server sends a jwt access token to the client.
   - The jwt access token is stored in the browser's local storage.
   - The jwt access token is then used to authenticate the user.
