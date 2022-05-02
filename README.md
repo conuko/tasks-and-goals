@@ -44,6 +44,7 @@ This is the FrontEnd of Shortlist - the modern To Do Application.
 3. The styles which can be found in `/src/styles`.
 
 - The Sass styling of the application is structured in 7-1 architecture pattern.
+
 - Furthermore there are `/src/assets` which contains the images, `/__tests__` which contains the tests for the frontend, and `/src/test` and `/src/utils` which contain the test helper files for the configuration for Vitest with Jest and React Testing Library.
 
 ## Usage
