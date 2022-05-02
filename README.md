@@ -7,6 +7,7 @@ This is the FrontEnd of Shortlist - the modern To Do Application.
 - [Getting Started](#getting-started)
 - [Tech Stack](#tech-stack)
 - [Architecture](#architecture)
+- [Repository Architecture](#repository-architecture)
 - [Usage](#usage)
 - [Authentication](#authentication)
 - [Back End](#back-end)
@@ -32,13 +33,17 @@ This is the FrontEnd of Shortlist - the modern To Do Application.
 
 - The Repository Architecture follows loosely the Tao of React approach by Alex Kondov [Tao of React](https://www.taoofreact.com/)
 - The Repository Architecture is divided into three main parts:
-  1. The reusable components which can be found in `/src/components`.
-  - The reusable components are divided into two parts:
-    - The reusable components which are used in multiple places.
-    - The reusable components which contain different aspects of the site's structural layout (e.g. navigation bar, footer, etc.).
-  2. The pages which can be found in `/src/pages`.
-  3. The styles which can be found in `/src/styles`.
-  - The Sass styling of the application is structured in 7-1 architecture pattern.
+
+1. The reusable components which can be found in `/src/components`.
+
+- The reusable components are divided into two parts:
+  - The reusable components which are used in multiple places.
+  - The reusable components which contain different aspects of the site's structural layout (e.g. navigation bar, footer, etc.).
+
+2. The pages which can be found in `/src/pages`.
+3. The styles which can be found in `/src/styles`.
+
+- The Sass styling of the application is structured in 7-1 architecture pattern.
 - Furthermore there are `/src/assets` which contains the images, `/__tests__` which contains the tests for the frontend, and `/src/test` and `/src/utils` which contain the test helper files for the configuration for Vitest with Jest and React Testing Library.
 
 ## Usage
