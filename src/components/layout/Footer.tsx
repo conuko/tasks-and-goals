@@ -17,14 +17,12 @@ const Footer = () => {
             </a>
             <br />
             <a href="http://www.github.com/conuko" target="_blank">
-              Link to GitHub
               <img className="footer__icon" src={GitHub} alt="GitHub" />
             </a>
             <a
               href="https://www.linkedin.com/in/constantin-unterkofler"
               target="_blank"
             >
-              Link to LinkedIn
               <img className="footer__icon" src={LinkedIn} alt="LinkedIn" />
             </a>
           </p>
