@@ -71,7 +71,6 @@ const Todos = (props: TodoProps) => {
   };
 
   const handleOnSubmit = (e: any) => {
-    //const id = uuid();
     const authorEmail = props.user.email;
     if (todo.content.trim()) {
       // function to add item to the server/database:
@@ -99,7 +98,6 @@ const Todos = (props: TodoProps) => {
         }
       );
       const data = await response.json();
-      // console.log(data);
     } catch (error) {
       console.log(error);
     }
