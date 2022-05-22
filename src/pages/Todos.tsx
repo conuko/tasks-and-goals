@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import TodoItem from "../components/layout/TodoItem";
+import fetch from "cross-fetch";
 
 interface TodoProps {
   user: any;
@@ -62,7 +63,7 @@ const Todos = (props: TodoProps) => {
   // fetch all todos from server everytime the todo state changes
   useEffect(() => {
     fetchTodos();
-  }, [todo]);
+  }, []);
 
   // change and submit handler for addtodo input form
   const handleOnChange = (c: any) => {
@@ -138,7 +139,7 @@ const Todos = (props: TodoProps) => {
           <span>{errors.task?.message}</span>
         </div>
         {isLoading ? (
-          <div>Loading...</div>
+          <div aria-label="loading">Loading...</div>
         ) : (
           <ul>
             {todos.map((todo, index) => (
