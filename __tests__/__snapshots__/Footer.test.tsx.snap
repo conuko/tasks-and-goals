@@ -1,0 +1,53 @@
+// Vitest Snapshot v1
+
+exports[`Should render footer 1`] = `
+<body>
+  <div>
+    <footer
+      class="footer"
+    >
+      <div
+        class="footer__child"
+      >
+        <div>
+          <p>
+            <strong>
+              Shortlist
+            </strong>
+             by
+             
+            <a
+              class="footer__link"
+              href="https://github.com/conuko"
+              target="_blank"
+            >
+              @conuko
+            </a>
+            <br />
+            <a
+              href="http://www.github.com/conuko"
+              target="_blank"
+            >
+              <img
+                alt="GitHub"
+                class="footer__icon"
+                src="/src/assets/images/icons8-github-48.png"
+              />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/constantin-unterkofler"
+              target="_blank"
+            >
+              <img
+                alt="LinkedIn"
+                class="footer__icon"
+                src="/src/assets/images/icons8-linkedin-48.png"
+              />
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+`;

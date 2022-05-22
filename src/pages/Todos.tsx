@@ -122,6 +122,7 @@ const Todos = (props: TodoProps) => {
     <div className="todos">
       <div className="flex-column">
         <div className="flex-column">
+          <h1>Todos</h1>
           <form onSubmit={handleSubmit(handleOnSubmit)}>
             <input
               {...register("task")}
