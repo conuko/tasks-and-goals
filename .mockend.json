@@ -1,28 +1,14 @@
 {
-	"Todos": {
-		"0": {
-			"id": "cl2s3w40300660m22hcz6lwu3",
-			"createdAt": "2022-05-04T21:43:20.643Z",
-			"updatedAt": "2022-05-11T13:58:49.678Z",
-			"checked": true,
-			"content": "running",
-			"authorId": "alan@alan.com"
-		},
-		"1": {
-			"id": "cl3fox2zd00540m00ae1p8xvq",
-			"createdAt": "2022-05-21T09:50:39.961Z",
-			"updatedAt": "2022-05-21T09:50:39.962Z",
-			"checked": false,
-			"content": "swimming",
-			"authorId": "alan@alan.com"
-		},
-		"2": {
-			"id": "cl31ilmte00450mp1vm6cj0jv",
-			"createdAt": "2022-05-11T11:45:01.634Z",
-			"updatedAt": "2022-05-21T09:53:00.370Z",
-			"checked": false,
-			"content": "testing",
-			"authorId": "alan@alan.com"
-		}
-	}
+  "Post": {
+    "title": { "string": {} },
+    "comments": {
+      "hasMany": "Comment"
+    }
+  },
+  "Comment": {
+    "body": { "string": {} },
+    "post": {
+      "belongsTo": "Post"
+    }
+  }
 }
