@@ -3,8 +3,8 @@ import { render, screen } from "../src/utils/test-utils";
 import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "../src/components/layout/Navbar";
 
-// Arrange
 test("Should have Home and Todos link", () => {
+  // Arrange
   render(
     <Router>
       <Navbar />

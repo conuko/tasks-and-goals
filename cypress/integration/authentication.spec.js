@@ -1,5 +1,5 @@
 describe("Authentication", () => {
-  context("Register a user and log them out afterwars", () => {
+  context("Register a user and log them out afterwards", () => {
     it("Registers a user correctly", () => {
       cy.visit("/register");
 

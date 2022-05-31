@@ -1,4 +1,5 @@
 import { VscClose } from "react-icons/vsc";
+import fetch from "cross-fetch";
 
 interface TodoItemProps {
   todo: any;
@@ -25,18 +26,15 @@ const TodoItem = (props: TodoItemProps) => {
 
   const handleToggleServer = async (todo: any) => {
     try {
-      const response = await fetch(
-        `https://shortlist-backend.herokuapp.com/task/check/${todo}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            checked: !todo.checked,
-          }),
-        }
-      );
+      const response = await fetch(`http://localhost:5000/task/check/${todo}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          checked: !todo.checked,
+        }),
+      });
       const data = await response.json();
     } catch (err) {
       console.log(err);
@@ -46,7 +44,7 @@ const TodoItem = (props: TodoItemProps) => {
   const handleUntoggleServer = async (todo: any) => {
     try {
       const response = await fetch(
-        `https://shortlist-backend.herokuapp.com/task/uncheck/${todo}`,
+        `http://localhost:5000/task/uncheck/${todo}`,
         {
           method: "PUT",
           headers: {
@@ -65,13 +63,10 @@ const TodoItem = (props: TodoItemProps) => {
 
   const handleRemoveServer = async (todo: any) => {
     try {
-      const response = await fetch(
-        `https://shortlist-backend.herokuapp.com/task/${todo}`,
-        {
-          method: "DELETE",
-          headers: { "Content-type": "application/json" },
-        }
-      );
+      const response = await fetch(`http://localhost:5000/task/${todo}`, {
+        method: "DELETE",
+        headers: { "Content-type": "application/json" },
+      });
       const data = await response.json();
     } catch (err) {
       console.log(err);

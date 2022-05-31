@@ -57,7 +57,7 @@ const Register = (props: RegisterProps) => {
   };
 
   const handleOnSubmit = () => {
-    fetch("https://shortlist-backend.herokuapp.com/auth", {
+    fetch("http://localhost:5000/auth", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

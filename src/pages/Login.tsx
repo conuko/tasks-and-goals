@@ -53,7 +53,7 @@ const Login = (props: LoginProps) => {
   };
 
   const handleOnSubmit = () => {
-    fetch("https://shortlist-backend.herokuapp.com/auth/login", {
+    fetch("http://localhost:5000/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

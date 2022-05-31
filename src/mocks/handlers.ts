@@ -38,7 +38,7 @@ export const user = {
 
 export const handlers = [
   rest.get(
-    `https://shortlist-backend.herokuapp.com/tasks/author/${user.email}`,
+    `http://localhost:5000/tasks/author/${user.email}`,
     (req, res, ctx) => {
       return res(ctx.status(200), ctx.json(todos));
     }

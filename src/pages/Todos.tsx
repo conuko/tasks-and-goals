@@ -43,12 +43,10 @@ const Todos = (props: TodoProps) => {
     try {
       todo.content === "" && setIsLoading(true);
       const response = await fetch(
-        `https://shortlist-backend.herokuapp.com/tasks/author/${userLocal.email}`,
+        `http://localhost:5000/tasks/author/${props.user.email}`,
         {
           headers: {
             "Content-Type": "application/json",
-            authorization: `Bearer ${userLocal.accessToken}`,
-            Accept: "application/json",
           },
         }
       );
@@ -88,16 +86,13 @@ const Todos = (props: TodoProps) => {
   // add todo to the server
   const addTodoToServer = async (todo: any) => {
     try {
-      const response = await fetch(
-        `https://shortlist-backend.herokuapp.com/task`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(todo),
-        }
-      );
+      const response = await fetch(`http://localhost:5000/task`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(todo),
+      });
       const data = await response.json();
     } catch (error) {
       console.log(error);

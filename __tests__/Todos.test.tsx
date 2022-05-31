@@ -9,20 +9,33 @@ import {
 import Todos from "../src/pages/Todos";
 import { user, todos } from "../src/mocks/handlers";
 
-test("Should render the todos", async () => {
-  const { container } = render(<Todos user={user} />, { route: "/todos" });
+test("Should render the mocked todos", async () => {
+  // Arrange
+  render(<Todos user={user} />, { route: "/todos" });
 
-  userEvent.type(screen.getByRole("textbox"), "test todo");
-  userEvent.click(screen.getByRole("button"));
+  // Act
+  await waitForElementToBeRemoved(() => screen.queryByLabelText("loading"));
 
-  //await waitForElementToBeRemoved(() => screen.getByText("Loading..."));
-  let loading: any;
-  await waitFor(() => {
-    loading = screen.queryByText("Loading...");
+  // Assert
+  todos.forEach((todo) => {
+    expect(screen.getByText(todo.content)).toBeDefined();
   });
 
-  const todo = container.querySelector(".todo");
-  expect(todo).toBeDefined();
-
   screen.debug();
+});
+
+test("Should toggle a todo", async () => {
+  // Arrange
+  const { container } = render(<Todos user={user} />, { route: "/todos" });
+
+  // Act
+  await waitForElementToBeRemoved(() => screen.queryByLabelText("loading"));
+  const todo = todos[0].content;
+  const firstTodo = container.querySelector(`#${todo}`);
+  userEvent.click(firstTodo);
+
+  // Assert
+  await waitFor(() => {
+    expect(firstTodo).toHaveProperty("checked");
+  });
 });
